@@ -90,7 +90,7 @@ QVariant StatsTableModel::headerData(int section, Qt::Orientation orientation, i
             break;
         }
     }
-    return QAbstractTableModel::headerData(section, orientation, role);
+	return QVariant();
 }
 
 
