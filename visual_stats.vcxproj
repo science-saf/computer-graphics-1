@@ -137,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="aboutdialog.cpp" />
+    <ClCompile Include="arc.cpp" />
     <ClCompile Include="customtableview.cpp" />
     <ClCompile Include="Debug\moc_aboutdialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -156,7 +157,10 @@
     <ClCompile Include="Debug\moc_statstablemodel.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="drawable.cpp" />
     <ClCompile Include="insertrowdialog.cpp" />
+    <ClCompile Include="letter.cpp" />
+    <ClCompile Include="letterscreator.cpp" />
     <ClCompile Include="lettersdrawer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
@@ -204,6 +208,7 @@ endlocal
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
+    <ClInclude Include="arc.h" />
     <ClInclude Include="basekeyvaluemodel.h" />
     <CustomBuild Include="customtableview.h">
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
@@ -245,6 +250,7 @@ endlocal
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
+    <ClInclude Include="drawable.h" />
     <ClInclude Include="GeneratedFiles\ui_aboutdialog.h" />
     <ClInclude Include="GeneratedFiles\ui_insertrowdialog.h" />
     <ClInclude Include="GeneratedFiles\ui_mainwindow.h" />
@@ -289,6 +295,8 @@ endlocal
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
+    <ClInclude Include="letter.h" />
+    <ClInclude Include="letterscreator.h" />
     <ClInclude Include="lettersdrawer.h" />
     <ClInclude Include="statskeyvaluemodel.h" />
     <ClInclude Include="statsserializer.h" />

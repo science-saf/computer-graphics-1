@@ -5,15 +5,17 @@
 #include "qpainter.h"
 #include "qpoint.h"
 #include "qpen.h"
+#include "letter.h"
+#include "lettersdrawer.h"
+#include "letterscreator.h"
+#include <ctime>
+#include <windows.h>
 
 AboutDialog::AboutDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AboutDialog),
-	m_lettersDrawer(this)
+    ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
-	m_lettersDrawer.setXLineWidthCoeff(0.1);
-	m_lettersDrawer.setYLineWidthCoeff(0.1);
 }
 
 AboutDialog::~AboutDialog()
@@ -23,17 +25,46 @@ AboutDialog::~AboutDialog()
 
 void AboutDialog::paintEvent(QPaintEvent *event)
 {
+	drawLetters();
+	update();
+}
+
+void AboutDialog::drawLetters()
+{
+	QPainter painter(this);
 	QFrame* lettersContainer = ui->lettersContainer;
 	QRect geometry = lettersContainer->geometry();
-	int x = geometry.x() + 30;
+	const int margin = 30;
+	const int letterWidth = 100;
+	int x = geometry.x() + margin;
 	int y = geometry.y();
 	int lineHeight = geometry.height();
-	int letterWidth = 100;
 
-	m_lettersDrawer.setColor(Qt::GlobalColor::darkBlue);
-	m_lettersDrawer.drawString("Ä", x, y, letterWidth, lineHeight);
-	m_lettersDrawer.setColor(Qt::GlobalColor::darkGreen);
-	m_lettersDrawer.drawString("Ï", x + letterWidth + m_lettersDrawer.getDistance(), y, letterWidth, lineHeight);
-	m_lettersDrawer.setColor(Qt::GlobalColor::cyan);
-	m_lettersDrawer.drawString("Ñ", x + 2 * (letterWidth + m_lettersDrawer.getDistance()), y, letterWidth, lineHeight);
+	LettersCreator lettersCreator;
+	lettersCreator.setXLineWidthCoeff(0.15);
+	lettersCreator.setYLineWidthCoeff(0.15);
+	Letter d = lettersCreator.createLetter('Ä', x, calculateLetterYCoord(y, 0), letterWidth, lineHeight);
+	Letter p = lettersCreator.createLetter('Ï', x + letterWidth + lettersCreator.getDistance(), calculateLetterYCoord(y, 1), letterWidth, lineHeight);
+	Letter s = lettersCreator.createLetter('Ñ', x + 2 * (letterWidth + lettersCreator.getDistance()), calculateLetterYCoord(y, 2), letterWidth, lineHeight);
+
+	LettersDrawer lettersDrawer;
+	lettersDrawer.setColor(Qt::GlobalColor::darkBlue);
+	lettersDrawer.draw(painter, d);
+	lettersDrawer.setColor(Qt::GlobalColor::darkGreen);
+	lettersDrawer.draw(painter, p);
+	lettersDrawer.setColor(Qt::GlobalColor::cyan);
+	lettersDrawer.draw(painter, s);
+}
+
+int AboutDialog::calculateLetterYCoord(int initialYCoord, int beginPhase)
+{
+	const int amplitude = 20;
+	const double timeCoefficient = 0.01;
+	const int phaseCoefficient = 100;
+
+	SYSTEMTIME systime;
+	GetSystemTime(&systime);
+	int phase = std::round((systime.wSecond * 1000 + systime.wMilliseconds + beginPhase * phaseCoefficient) * timeCoefficient);
+
+	return initialYCoord + std::round(amplitude * sin(phase));
 }

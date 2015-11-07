@@ -2,8 +2,6 @@
 #define ABOUTDIALOG_H
 
 #include <QDialog>
-#include <QFrame>
-#include "lettersdrawer.h"
 
 namespace Ui {
 class AboutDialog;
@@ -20,9 +18,9 @@ protected:
 	void paintEvent(QPaintEvent *event);
 
 private:
-	LettersDrawer m_lettersDrawer;
-
-    Ui::AboutDialog *ui;
+	void drawLetters();
+	int calculateLetterYCoord(int initialYCoord, int phase = 0);
+	Ui::AboutDialog *ui;
 };
 
 #endif // ABOUTDIALOG_H

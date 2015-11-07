@@ -110,6 +110,18 @@
     <ClCompile Include="Release\moc_statstablemodel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="arc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="letter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="drawable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="letterscreator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="lettersdrawer.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -166,6 +178,18 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_mainwindow.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="arc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="drawable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="letter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="letterscreator.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lettersdrawer.h">
       <Filter>Generated Files</Filter>
