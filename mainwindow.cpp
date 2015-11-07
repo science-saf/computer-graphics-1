@@ -34,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_ui->actionDeleteRow->setShortcut(QKeySequence(QKeySequence::Delete));
     m_ui->actionInsertRow->setShortcut(QKeySequence("Insert"));
 
+	m_ui->actionAbout->setShortcut(QKeySequence(QKeySequence::HelpContents));
+
     m_document.reset(new StatsDocument(this, *m_tableModel));
 }
 
